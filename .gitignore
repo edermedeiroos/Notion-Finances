@@ -182,3 +182,4 @@ cython_debug/
 
 # Credentials
 config.json
+*.xlsx

@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas
+import openpyxl
 
 with open("config.json", "r") as archive:
     configJson = json.load(archive)
@@ -36,9 +37,15 @@ dscRequest = requests.post(url=urlDataSourceQuery,
                            )
 dscJson = dscRequest.json()
 
+# DataFrame Data
+generalData = []
+dataColumns = ["Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo"]
+
+# Iteraction over the pages from the list
 for object in dscJson["results"]:
     properties = object["properties"]
 
+    # Object properties
     name = properties["Transações"]["title"][0]["plain_text"]
     value = properties["Valor"]["number"]
     type = properties["Tipo"]["select"]["name"]
@@ -47,4 +54,12 @@ for object in dscJson["results"]:
     efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
 
     objectData = (name, value, type, category, date, efectiveValue)
+
+    # Append to dataFrame
+    generalData.append(objectData)
     print(objectData)
+
+df = pandas.DataFrame(generalData, columns=dataColumns)
+
+print(df)
+df.to_excel("Finanças.xlsx", index=False)
