@@ -86,4 +86,4 @@ df = pandas.DataFrame(generalData, columns=dataColumns)
 
 # Exportation
 df.to_excel("Finanças.xlsx", index=False)
-df.to_csv("Finanças.csv", index=False)
+df.to_csv("FAT_TABLE.csv", index=False)

@@ -182,4 +182,7 @@ cython_debug/
 
 # Credentials
 config.json
+
+# Output archives
 *.xlsx
+*.csv
