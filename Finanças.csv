@@ -1,0 +1,187 @@
+ID,Nome,Valor,Tipo,Categoria,Data,Valor Efetivo,Conta
+1,Saldo Inicio Mapeamento,889.96,Receita,Outros,2025-07-15,889.96,Inter
+2,Saldo Inicio Mapeamento,1264.8,Receita,Outros,2025-07-15,1264.8,Flash
+3,Pinguim,8.0,Despesa,Alimentação,2025-07-16,-8.0,Inter
+4,Porquinho Inter,500.22,Investimentos,CDI,2025-07-16,-500.22,Inter
+5,Rolê,9.41,Despesa,Rolês,2025-07-18,-9.41,Inter
+6,Golim,76.63,Despesa,Rolês,2025-07-20,-76.63,Inter
+7,Créditos RU,23.5,Despesa,Alimentação,2025-07-21,-23.5,Inter
+8,Rolê,20.99,Despesa,Rolês,2025-07-22,-20.99,Inter
+9,Bar do Japa e Drop the Hop,44.0,Despesa,Rolês,2025-07-24,-44.0,Inter
+10,Almoço Genesis,23.0,Despesa,Alimentação,2025-07-28,-23.0,Inter
+11,Casa Tanigawa,8.98,Despesa,Rolês,2025-07-28,-8.98,Inter
+12,Drop the Hop,30.0,Despesa,Rolês,2025-07-28,-30.0,Inter
+13,Mesada Pai,120.0,Receita,Mesada,2025-07-28,120.0,Inter
+14,Alimentação,100.0,Receita,Presentes,2025-07-30,100.0,Inter
+15,Mesada Mãe,300.0,Receita,Mesada,2025-07-30,300.0,Inter
+16,Drop the Hop,60.86,Despesa,Rolês,2025-08-02,-60.86,Inter
+17,Empréstimo Duda,16.0,Receita,Retornos Empréstimos,2025-08-02,16.0,Inter
+18,Alimentação,100.0,Receita,Presentes,2025-08-04,100.0,Inter
+19,Passe de Ônibus,155.44,Receita,Presentes,2025-08-04,155.44,Inter
+20,Rodízio de Pizza,71.39,Despesa,Rolês,2025-08-05,-71.39,Inter
+21,Salário,165.33,Receita,Salário,2025-08-05,165.33,Inter
+22,Bar do Japa,40.0,Despesa,Rolês,2025-08-08,-40.0,Flash
+23,Empréstimo Yudi,8.0,Receita,Retornos Empréstimos,2025-08-08,8.0,Inter
+24,Cervejada IX,37.21,Despesa,Rolês,2025-08-09,-37.21,Inter
+25,McDonald’s,75.4,Despesa,Rolês,2025-08-09,-75.4,Flash
+26,Mesada Pai,120.0,Receita,Mesada,2025-08-09,120.0,Inter
+27,Cinema Pai,18.96,Despesa,Rolês,2025-08-10,-18.96,Flash
+28,Caderneta,19.9,Despesa,Compras,2025-08-11,-19.9,Inter
+29,Créditos RU,23.5,Despesa,Alimentação,2025-08-14,-23.5,Inter
+30,Pinguim,8.0,Despesa,Alimentação,2025-08-14,-8.0,Flash
+31,Barbeiro,40.0,Despesa,Auto Cuidado,2025-08-15,-40.0,Inter
+32,Drop the Hop,74.8,Despesa,Rolês,2025-08-15,-74.8,Flash
+33,Empréstimo Biaggi,11.0,Receita,Retornos Empréstimos,2025-08-15,11.0,Inter
+34,Empréstimo João,37.4,Receita,Retornos Empréstimos,2025-08-15,37.4,Inter
+35,Empoçados,15.0,Despesa,Rolês,2025-08-16,-15.0,Inter
+36,Pagamento Caderneta e Barbeiro,60.0,Receita,Retornos Empréstimos,2025-08-17,60.0,Inter
+37,Vale Alimentação,468.0,Receita,Benefícios,2025-08-18,468.0,Flash
+38,Mercado Mãe,259.68,Despesa,Mercado,2025-08-19,-259.68,Flash
+39,Pinguim,0.5,Despesa,Alimentação,2025-08-19,-0.5,Flash
+40,Empréstimo Ruan,9.5,Receita,Retornos Empréstimos,2025-08-21,9.5,Inter
+41,Drop the Hop,139.37,Despesa,Rolês,2025-08-22,-139.37,Flash
+42,Bob’s,22.9,Despesa,Rolês,2025-08-23,-22.9,Flash
+43,Empréstimo Biaggi,41.74,Receita,Retornos Empréstimos,2025-08-23,41.74,Inter
+44,Mesada Pai,120.0,Receita,Mesada,2025-08-23,120.0,Inter
+45,Presente Alana,74.98,Despesa,Compras,2025-08-23,-74.98,Flash
+46,Açai,25.16,Despesa,Rolês,2025-08-24,-25.16,Flash
+47,Gente Boa,11.5,Despesa,Alimentação,2025-08-25,-11.5,Flash
+48,Mercado Mãe,317.32,Despesa,Mercado,2025-08-25,-317.32,Flash
+49,Submundo 2.0,22.0,Despesa,Rolês,2025-08-27,-22.0,Inter
+50,Passe de Ônibus,51.84,Despesa,Transporte,2025-08-28,-51.84,Inter
+51,Alimentação,200.0,Receita,Presentes,2025-08-29,200.0,Inter
+52,Beco,8.5,Despesa,Rolês,2025-08-29,-8.5,Flash
+53,Casa Guilherme,135.0,Despesa,Rolês,2025-08-29,-135.0,Inter
+54,Mesada Mãe,200.0,Receita,Mesada,2025-08-29,200.0,Inter
+55,Casa da Cachaça,134.3,Despesa,Rolês,2025-08-30,-134.3,Flash
+56,Merenda com Gi,101.08,Despesa,Rolês,2025-08-31,-101.08,Flash
+57,Porquinho Inter,432.94,Investimentos,CDI,2025-08-31,-432.94,Inter
+58,Carregador Iphone,125.94,Despesa,Compras,2025-09-01,-125.94,Inter
+59,Mercado,147.67,Despesa,Mercado,2025-09-01,-147.67,Flash
+60,Vale Refeição,650.0,Receita,Benefícios,2025-09-01,650.0,Flash
+61,Mercado,271.86,Despesa,Mercado,2025-09-02,-271.86,Flash
+62,Exposição Van Gogh,79.1,Despesa,Rolês,2025-09-03,-79.1,Inter
+63,Passe de Ônibus,155.44,Receita,Mesada,2025-09-03,155.44,Inter
+64,Remédios,12.78,Despesa,Farmácia,2025-09-04,-12.78,Inter
+65,Salário,1240.0,Receita,Salário,2025-09-04,1240.0,Inter
+66,Uber,21.69,Despesa,Transporte,2025-09-04,-21.69,Inter
+67,Beco,12.5,Despesa,Rolês,2025-09-05,-12.5,Flash
+68,Empréstimo,69.3,Receita,Retornos Empréstimos,2025-09-05,69.3,Inter
+69,Empréstimo,35.0,Receita,Retornos Empréstimos,2025-09-06,35.0,Inter
+70,Mercado,352.47,Despesa,Mercado,2025-09-06,-352.47,Flash
+71,Mesada,120.0,Receita,Mesada,2025-09-06,120.0,Inter
+72,Porquinho Inter,800.0,Investimentos,CDI,2025-09-06,-800.0,Inter
+73,Rolê Duda,85.0,Despesa,Rolês,2025-09-06,-85.0,Flash
+74,Criptomoedas,400.0,Investimentos,Crypto,2025-09-07,-400.0,Inter
+75,Porquinho Inter,180.23,Investimentos,CDI,2025-09-07,-180.23,Inter
+76,Alistamento Militar,6.38,Despesa,Outros,2025-09-08,-6.38,Inter
+77,Barbeiro,40.0,Despesa,Auto Cuidado,2025-09-08,-40.0,Inter
+78,Beco,20.0,Despesa,Rolês,2025-09-08,-20.0,Flash
+79,Restaurante Universitário,23.5,Despesa,Alimentação,2025-09-08,-23.5,Inter
+80,Fone JBL,229.99,Despesa,Compras,2025-09-09,-229.99,Inter
+81,Jaqueta,209.5,Despesa,Compras,2025-09-10,-209.5,Inter
+82,Minoxidil,85.0,Despesa,Auto Cuidado,2025-09-10,-85.0,Inter
+83,Shopping ,76.02,Despesa,Rolês,2025-09-10,-76.02,Inter
+84,Beco,11.0,Despesa,Rolês,2025-09-11,-11.0,Flash
+85,Empréstimo,5.5,Receita,Retornos Empréstimos,2025-09-11,5.5,Inter
+86,Papo Cabeça,17.0,Despesa,Rolês,2025-09-12,-17.0,Inter
+87,Submundo,15.0,Despesa,Rolês,2025-09-13,-15.0,Inter
+88,Pinguim,3.5,Despesa,Alimentação,2025-09-15,-3.5,Flash
+89,Camisinhas,27.8,Despesa,Farmácia,2025-09-18,-27.8,Inter
+90,Pinguim,3.5,Despesa,Alimentação,2025-09-18,-3.5,Flash
+91,Vale Alimentação,468.0,Receita,Benefícios,2025-09-18,468.0,Flash
+92,Vira Baixaria,20.0,Despesa,Rolês,2025-09-18,-20.0,Inter
+93,Beco e Agrobar,5.41,Despesa,Rolês,2025-09-19,-5.41,Inter
+94,Beco e Agrobar,113.17,Despesa,Rolês,2025-09-19,-113.17,Flash
+95,Empréstimo,150.0,Receita,Retornos Empréstimos,2025-09-19,150.0,Inter
+96,Mercado,251.22,Despesa,Mercado,2025-09-19,-251.22,Flash
+97,Mesada,120.0,Receita,Mesada,2025-09-20,120.0,Inter
+98,Empréstimo,0.13,Receita,Retornos Empréstimos,2025-09-21,0.13,Inter
+99,Empréstimo,60.0,Receita,Retornos Empréstimos,2025-09-21,60.0,Inter
+100,Frango Assado,60.0,Despesa,Alimentação,2025-09-21,-60.0,Flash
+101,Barbeiro,40.0,Despesa,Auto Cuidado,2025-09-23,-40.0,Inter
+102,Empréstimo,41.5,Receita,Retornos Empréstimos,2025-09-25,41.5,Inter
+103,Zebrão e Pierots,78.0,Despesa,Rolês,2025-09-25,-78.0,Flash
+104,Pinguim,8.0,Despesa,Alimentação,2025-09-26,-8.0,Flash
+105,Vira Baixaria,16.0,Despesa,Rolês,2025-09-26,-16.0,Inter
+106,Empréstimo,12.0,Receita,Retornos Empréstimos,2025-09-27,12.0,Inter
+107,Empréstimo,14.0,Receita,Retornos Empréstimos,2025-09-27,14.0,Inter
+108,Mercado,43.13,Despesa,Mercado,2025-09-27,-43.13,Flash
+109,Pinguim,10.0,Despesa,Alimentação,2025-09-30,-10.0,Flash
+110,Chocolates Gi,19.4,Despesa,Mercado,2025-10-01,-19.4,Flash
+111,Mesada,200.0,Receita,Mesada,2025-10-01,200.0,Inter
+112,Vale Refeição,675.0,Receita,Benefícios,2025-10-01,675.0,Flash
+113,Churrasco CDIA,55.0,Despesa,Rolês,2025-10-02,-55.0,Inter
+114,Alimentação,200.0,Receita,Presentes,2025-10-03,200.0,Inter
+115,Gente Boa,7.0,Despesa,Alimentação,2025-10-03,-7.0,Flash
+116,Mercado,255.99,Despesa,Mercado,2025-10-03,-255.99,Flash
+117,Passe Ônibus,155.44,Receita,Mesada,2025-10-03,155.44,Inter
+118,Empréstimo,26.0,Receita,Retornos Empréstimos,2025-10-04,26.0,Inter
+119,Mesada,120.0,Receita,Mesada,2025-10-04,120.0,Inter
+120,Poupança,1300.0,Receita,Retornos Invetidos,2025-10-04,1300.0,Inter
+121,Rolê,50.41,Despesa,Rolês,2025-10-04,-50.41,Flash
+122,Treino com Gi,30.0,Despesa,Rolês,2025-10-04,-30.0,Inter
+123,Gasolina,5.0,Despesa,Transporte,2025-10-05,-5.0,Inter
+124,Uber,5.1,Despesa,Transporte,2025-10-05,-5.1,Inter
+125,Agulha Vinil,28.69,Despesa,Compras,2025-10-06,-28.69,Inter
+126,Cabo Display-Port,28.31,Despesa,Compras,2025-10-06,-28.31,Inter
+127,Caderneta,19.9,Despesa,Compras,2025-10-06,-19.9,Inter
+128,Placa de Vídeo,2250.08,Despesa,Compras,2025-10-06,-2250.08,Inter
+129,Porquinho Inter,1269.56,Investimentos,CDI,2025-10-06,-1269.56,Inter
+130,Salário,1198.67,Receita,Salário,2025-10-06,1198.67,Inter
+131,Mercado Mãe,235.79,Despesa,Mercado,2025-10-07,-235.79,Flash
+132,Almoço Trabalho,57.63,Despesa,Alimentação,2025-10-08,-57.63,Flash
+133,Empréstimo,12.0,Despesa,Empréstimos,2025-10-09,-12.0,Inter
+134,Passe de Ônibus,57.6,Despesa,Transporte,2025-10-09,-57.6,Inter
+135,Lanche Pinguim,8.0,Despesa,Alimentação,2025-10-10,-8.0,Flash
+136,Saque Porquinho,200.0,Receita,Retornos Invetidos,2025-10-10,200.0,Inter
+137,Criptomoedas,400.0,Investimentos,Crypto,2025-10-11,-400.0,Inter
+138,Jantar,20.0,Despesa,Alimentação,2025-10-11,-20.0,Flash
+139,Porquinho Inter,130.44,Investimentos,CDI,2025-10-11,-130.44,Inter
+140,Poupança,200.0,Receita,Retornos Invetidos,2025-10-11,200.0,Inter
+141,Presente Barreto,20.0,Despesa,Rolês,2025-10-11,-20.0,Inter
+142,Saque Porquinho,400.0,Receita,Retornos Invetidos,2025-10-11,400.0,Inter
+143,Valentino,20.0,Despesa,Rolês,2025-10-11,-20.0,Inter
+144,Restaurante Universitário,23.5,Despesa,Alimentação,2025-10-14,-23.5,Inter
+145,Concerto PC,389.9,Despesa,Compras,2025-10-15,-389.9,Inter
+146,Saque Porquinho,390.0,Receita,Retornos Invetidos,2025-10-15,390.0,Inter
+147,Barbeiro,40.0,Despesa,Auto Cuidado,2025-10-17,-40.0,Inter
+148,Empréstimo,26.0,Receita,Retornos Empréstimos,2025-10-17,26.0,Inter
+149,Mesada,120.0,Receita,Mesada,2025-10-17,120.0,Inter
+150,Minoxidil,85.0,Despesa,Auto Cuidado,2025-10-17,-85.0,Inter
+151,Presente Barbarah,55.9,Despesa,Compras,2025-10-17,-55.9,Inter
+152,Rolê ,74.0,Despesa,Rolês,2025-10-18,-74.0,Flash
+153,Vale Alimentação ,468.0,Receita,Benefícios,2025-10-18,468.0,Flash
+154,Empréstimo,22.5,Receita,Retornos Empréstimos,2025-10-19,22.5,Inter
+155,Presente Mãe,100.0,Receita,Presentes,2025-10-19,100.0,Inter
+156,Presente Yudi,40.0,Despesa,Compras,2025-10-19,-40.0,Inter
+157,Lanche Pinguim,8.0,Despesa,Alimentação,2025-10-20,-8.0,Flash
+158,Aniversário Yudi,251.5,Despesa,Rolês,2025-10-21,-251.5,Flash
+159,Empréstimo,215.45,Receita,Retornos Empréstimos,2025-10-21,215.45,Inter
+160,Empréstimo ,20.0,Receita,Retornos Empréstimos,2025-10-23,20.0,Inter
+161,Padaria,17.69,Despesa,Alimentação,2025-10-23,-17.69,Flash
+162,Role Bar Brasil,11.0,Despesa,Rolês,2025-10-23,-11.0,Flash
+163,Empréstimo ,105.0,Receita,Retornos Empréstimos,2025-10-25,105.0,Inter
+164,Jantar Boa Praça Curitiba,215.61,Despesa,Alimentação,2025-10-25,-215.61,Inter
+165,McDonalds,18.0,Despesa,Alimentação,2025-10-25,-18.0,Flash
+166,Distribuidora Curitiba,21.99,Despesa,Alimentação,2025-10-26,-21.99,Flash
+167,Empréstimo ,20.0,Receita,Retornos Empréstimos,2025-10-26,20.0,Inter
+168,Empréstimo ,105.0,Receita,Retornos Empréstimos,2025-10-26,105.0,Inter
+169,Largo da Ordem Curitiba,16.0,Despesa,Alimentação,2025-10-26,-16.0,Flash
+170,Largo da Ordem Curitiba,105.0,Despesa,Alimentação,2025-10-26,-105.0,Inter
+171,Mercadão Curitiba,16.4,Despesa,Alimentação,2025-10-26,-16.4,Flash
+172,Presente Denise,10.0,Despesa,Presentes,2025-10-26,-10.0,Inter
+173,Empréstimo ,22.0,Receita,Retornos Empréstimos,2025-10-28,22.0,Inter
+174,Gasolina,10.0,Despesa,Transporte,2025-10-28,-10.0,Inter
+175,Rolê ,54.45,Despesa,Rolês,2025-10-28,-54.45,Flash
+176,Empréstimo ,16.25,Receita,Retornos Empréstimos,2025-10-29,16.25,Inter
+177,Venda Headset,50.0,Receita,Vendas,2025-10-29,50.0,Inter
+178,Mesada Pai,120.0,Receita,Mesada,2025-11-01,120.0,Inter
+179,Prime CS,85.99,Despesa,Compras,2025-11-01,-85.99,Inter
+180,Vale Refeição,600.0,Receita,Benefícios,2025-11-01,600.0,Flash
+181,Alimentação,100.0,Receita,Presentes,2025-11-03,100.0,Inter
+182,Cryptomoedas,400.0,Investimentos,Crypto,2025-11-03,-400.0,Inter
+183,Mesada Mãe,200.0,Receita,Mesada,2025-11-03,200.0,Inter
+184,Passe de Ônibus,155.44,Receita,Presentes,2025-11-03,155.44,Inter
+185,Porquinho Inter,390.0,Investimentos,CDI,2025-11-03,-390.0,Inter
+186,Mercado Mãe,273.0,Despesa,Mercado,2025-11-04,-273.0,Flash

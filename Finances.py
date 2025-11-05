@@ -18,7 +18,7 @@ urlDataSourceQuery = "https://api.notion.com/v1/data_sources/25b22a3e-ef57-8147-
 bodyDataSourceQuery = {"sorts": [
         {
             "property": "Data",
-            "direction": "descending"
+            "direction": "ascending"
         },
         {   
             "property": "Transações",
@@ -39,7 +39,10 @@ dscJson = dscRequest.json()
 
 # DataFrame Data
 generalData = []
-dataColumns = ["Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo", "Conta"]
+dataColumns = ["ID", "Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo", "Conta"]
+
+# Primary Key Declaration
+index = 1
 
 # Iteraction over the pages from the list
 while True:
@@ -47,6 +50,7 @@ while True:
         properties = object["properties"]
 
         # Object properties
+        id = index
         name = properties["Transações"]["title"][0]["plain_text"]
         value = properties["Valor"]["number"]
         type = properties["Tipo"]["select"]["name"]
@@ -55,10 +59,13 @@ while True:
         efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
         bankAccount = properties["Conta"]["select"]["name"]
 
-        objectData = (name, value, type, category, date, efectiveValue, bankAccount)
+        objectData = (id, name, value, type, category, date, efectiveValue, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
+
+        # Primary Key
+        index += 1
 
     # Verify if has more data
     if dscJson["has_more"]:
@@ -76,4 +83,7 @@ while True:
         break
 
 df = pandas.DataFrame(generalData, columns=dataColumns)
+
+# Exportation
 df.to_excel("Finanças.xlsx", index=False)
+df.to_csv("Finanças.csv", index=False)
