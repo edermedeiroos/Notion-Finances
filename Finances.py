@@ -8,13 +8,14 @@ with open("config.json", "r") as archive:
 
 # Acess Credential
 SECRET = configJson["Internal Integration Secret"]
+DATA_SOURCE_ID = configJson["Data Source ID"]
 AUTH_HEADERS = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {SECRET}",
     "Notion-Version": "2025-09-03"
 }
 
-urlDataSourceQuery = "https://api.notion.com/v1/data_sources/25b22a3e-ef57-8147-ae65-000b8dd610e3/query"
+urlDataSourceQuery = f"https://api.notion.com/v1/data_sources/{DATA_SOURCE_ID}/query"
 bodyDataSourceQuery = {"sorts": [
         {
             "property": "Data",
