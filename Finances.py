@@ -40,7 +40,7 @@ dscJson = dscRequest.json()
 
 # DataFrame Data
 generalData = []
-dataColumns = ["ID", "Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo", "Conta"]
+dataColumns = ["ID", "Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo", "Associado", "Conta"]
 
 # Primary Key Declaration
 index = 1
@@ -58,9 +58,10 @@ while True:
         category = properties["Categoria"]["select"]["name"]
         date = properties["Data"]["date"]["start"]
         efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
+        associated = properties["Valor Efetivo"]["formula"]["number"]
         bankAccount = properties["Conta"]["select"]["name"]
 
-        objectData = (id, name, value, type, category, date, efectiveValue, bankAccount)
+        objectData = (id, name, value, type, category, date, efectiveValue, associated, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
@@ -86,5 +87,5 @@ while True:
 df = pandas.DataFrame(generalData, columns=dataColumns)
 
 # Exportation
-df.to_excel("Finanças.xlsx", index=False)
-df.to_csv("FAT_TABLE.csv", index=False)
+df.to_excel("C:\BI\FinancesDB\Finanças.xlsx", index=False)
+df.to_csv("C:\BI\FinancesDB\FAT_TABLE.csv", index=False)
