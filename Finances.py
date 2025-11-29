@@ -40,7 +40,7 @@ dscJson = dscRequest.json()
 
 # DataFrame Data
 generalData = []
-dataColumns = ["ID", "Nome", "Valor", "Tipo", "Categoria", "Data", "Valor Efetivo", "Associado", "Conta"]
+dataColumns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ASSOCIATED", "ACCOUNT"]
 
 # Primary Key Declaration
 index = 1
@@ -50,18 +50,64 @@ while True:
     for object in dscJson["results"]:
         properties = object["properties"]
 
-        # Object properties
         id = index
-        name = properties["Transações"]["title"][0]["plain_text"]
-        value = properties["Valor"]["number"]
-        type = properties["Tipo"]["select"]["name"]
-        category = properties["Categoria"]["select"]["name"]
-        date = properties["Data"]["date"]["start"]
-        efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
-        associated = properties["Valor Efetivo"]["formula"]["number"]
-        bankAccount = properties["Conta"]["select"]["name"]
+        
+        # 1. Name
+        try:
+            name = properties["Transações"]["title"][0]["plain_text"]
+        except (KeyError, IndexError, TypeError):
+            name = "Sem Título"
 
-        objectData = (id, name, value, type, category, date, efectiveValue, associated, bankAccount)
+        # 2. Value
+        try:
+            value = properties["Valor"]["number"]
+        except (KeyError, TypeError):
+            value = 0.0
+
+        # 3. Type
+        try:
+            type = properties["Tipo"]["select"]["name"]
+        except (KeyError, TypeError):
+            type = None
+
+        # 4. Category
+        try:
+            category = properties["Categoria"]["select"]["name"]
+        except (KeyError, TypeError):
+            category = None
+
+        # 5. Sub-Category
+        try:
+            subCategory = properties["Sub-Categoria"]["select"]["name"]
+        except (KeyError, TypeError, AttributeError):
+            subCategory = None
+
+        # 6. Date
+        try:
+            date = properties["Data"]["date"]["start"]
+        except (KeyError, TypeError):
+            date = None
+
+        # 7. Efective Value
+        try:
+            efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
+        except (KeyError, TypeError):
+            efectiveValue = 0.0
+
+        # 8. Associated People
+        try:
+            associated_list = [associated["name"] for associated in properties["Associado"]["multi_select"]]
+            associated_people = ", ".join(associated_list)
+        except (KeyError, TypeError):
+            associated_people = None
+
+        # 9. Account
+        try:
+            bankAccount = properties["Conta"]["select"]["name"]
+        except (KeyError, TypeError):
+            bankAccount = None
+
+        objectData = (id, name, value, type, category, subCategory, date, efectiveValue, associated_people, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
