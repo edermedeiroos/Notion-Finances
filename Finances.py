@@ -90,7 +90,7 @@ while True:
 
         # 7. Efective Value
         try:
-            efectiveValue = properties["Valor Efetivo"]["formula"]["number"]
+            efectiveValue = properties["Valor Efetivo"]["number"]
         except (KeyError, TypeError):
             efectiveValue = 0.0
 
