@@ -40,7 +40,7 @@ dscJson = dscRequest.json()
 
 # DataFrame Data
 generalData = []
-dataColumns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ASSOCIATED", "ACCOUNT"]
+dataColumns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ACCOUNT"]
 
 # Primary Key Declaration
 index = 1
@@ -94,20 +94,13 @@ while True:
         except (KeyError, TypeError):
             efectiveValue = 0.0
 
-        # 8. Associated People
-        try:
-            associated_list = [associated["name"] for associated in properties["Associado"]["multi_select"]]
-            associated_people = ", ".join(associated_list)
-        except (KeyError, TypeError):
-            associated_people = None
-
-        # 9. Account
+        # 8. Account
         try:
             bankAccount = properties["Conta"]["select"]["name"]
         except (KeyError, TypeError):
             bankAccount = None
 
-        objectData = (id, name, value, type, category, subCategory, date, efectiveValue, associated_people, bankAccount)
+        objectData = (id, name, value, type, category, subCategory, date, efectiveValue, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
