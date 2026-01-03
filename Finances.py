@@ -18,15 +18,15 @@ AUTH_HEADERS = {
 urlDataSourceQuery = f"https://api.notion.com/v1/data_sources/{DATA_SOURCE_ID}/query"
 bodyDataSourceQuery = {"sorts": [
         {
-            "property": "Data",
+            "property": "Date",
             "direction": "ascending"
         },
         {   
-            "property": "Transações",
+            "property": "Name",
             "direction": "ascending"
         },
         {   
-            "property": "Valor",
+            "property": "Value",
             "direction": "ascending"
         }]
     }
@@ -49,58 +49,56 @@ index = 1
 while True:
     for object in dscJson["results"]:
         properties = object["properties"]
-
-        id = index
         
         # 1. Name
         try:
-            name = properties["Transações"]["title"][0]["plain_text"]
+            name = properties["Name"]["title"][0]["plain_text"]
         except (KeyError, IndexError, TypeError):
             name = "Sem Título"
 
         # 2. Value
         try:
-            value = properties["Valor"]["number"]
+            value = properties["Value"]["number"]
         except (KeyError, TypeError):
             value = 0.0
 
         # 3. Type
         try:
-            type = properties["Tipo"]["select"]["name"]
+            type = properties["Type"]["select"]["name"]
         except (KeyError, TypeError):
             type = None
 
         # 4. Category
         try:
-            category = properties["Categoria"]["select"]["name"]
+            category = properties["Category"]["select"]["name"]
         except (KeyError, TypeError):
             category = None
 
         # 5. Sub-Category
         try:
-            subCategory = properties["Sub-Categoria"]["select"]["name"]
+            subCategory = properties["Sub Category"]["select"]["name"]
         except (KeyError, TypeError, AttributeError):
             subCategory = None
 
         # 6. Date
         try:
-            date = properties["Data"]["date"]["start"]
+            date = properties["Date"]["date"]["start"]
         except (KeyError, TypeError):
             date = None
 
         # 7. Efective Value
         try:
-            efectiveValue = properties["Valor Efetivo"]["number"]
+            efectiveValue = properties["Efective Value"]["formula"]["number"]
         except (KeyError, TypeError):
             efectiveValue = 0.0
 
         # 8. Account
         try:
-            bankAccount = properties["Conta"]["select"]["name"]
+            bankAccount = properties["Account"]["select"]["name"]
         except (KeyError, TypeError):
             bankAccount = None
 
-        objectData = (id, name, value, type, category, subCategory, date, efectiveValue, bankAccount)
+        objectData = (index, name, value, type, category, subCategory, date, efectiveValue, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
