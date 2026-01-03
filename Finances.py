@@ -47,8 +47,8 @@ index = 1
 
 # Iteraction over the pages from the list
 while True:
-    for object in dscJson["results"]:
-        properties = object["properties"]
+    for item in dscJson["results"]:
+        properties = item["properties"]
         
         # 1. Name
         try:
@@ -58,15 +58,15 @@ while True:
 
         # 2. Value
         try:
-            value = properties["Value"]["number"]
+            value = round(float(properties["Value"]["number"]), 2)
         except (KeyError, TypeError):
             value = 0.0
 
         # 3. Type
         try:
-            type = properties["Type"]["select"]["name"]
+            transaction_type = properties["Type"]["select"]["name"]
         except (KeyError, TypeError):
-            type = None
+            transaction_type = None
 
         # 4. Category
         try:
@@ -98,7 +98,7 @@ while True:
         except (KeyError, TypeError):
             bankAccount = None
 
-        objectData = (index, name, value, type, category, subCategory, date, efectiveValue, bankAccount)
+        objectData = (index, name, value, transaction_type, category, subCategory, date, efectiveValue, bankAccount)
 
         # Append to dataFrame
         generalData.append(objectData)
