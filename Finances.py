@@ -15,7 +15,7 @@ DB_PORT = configJson.get("DB_PORT")
 DB_DATABASE = configJson.get("DB_DATABASE")
 
 engine = sqlalchemy.create_engine(
-    f"mariadb+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}"
+    f"mysql+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}"
 )
 
 # Acess Credential to API
@@ -136,6 +136,6 @@ while True:
 df = pandas.DataFrame(generalData, columns=dataColumns)
 
 # Exportation
-df.to_sql(name="FAT_FINANCES", con=engine, if_exists='replace', index=False)
+df.to_sql(name="fat_finances", con=engine, if_exists='replace', index=False)
 df.to_excel(r"C:\BI\FinancesDB\Finanças.xlsx", index=False)
 df.to_csv(r"C:\BI\FinancesDB\FAT_TABLE.csv", index=False)
