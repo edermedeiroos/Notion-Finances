@@ -2,13 +2,25 @@ import requests
 import json
 import pandas
 import openpyxl
+import sqlalchemy
 
 with open("config.json", "r") as archive:
     configJson = json.load(archive)
 
-# Acess Credential
-SECRET = configJson["Internal Integration Secret"]
-DATA_SOURCE_ID = configJson["Data Source ID"]
+# Acess Credential to DataBase + Engine
+DB_USER = configJson.get("DB_USER")
+DB_PASSWORD = configJson.get("DB_PASSWORD")
+DB_HOST = configJson.get("DB_HOST")
+DB_PORT = configJson.get("DB_PORT")
+DB_DATABASE = configJson.get("DB_DATABASE")
+
+engine = sqlalchemy.create_engine(
+    f"mariadb+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}"
+)
+
+# Acess Credential to API
+SECRET = configJson["INTERNAL_INTEGRATION_SECRET"]
+DATA_SOURCE_ID = configJson["DATA_SOURCE_ID"]
 AUTH_HEADERS = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {SECRET}",
