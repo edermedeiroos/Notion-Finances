@@ -23,21 +23,17 @@ DB_PASSWORD = configJson.get("DB_PASSWORD")
 DB_HOST = configJson.get("DB_HOST")
 DB_PORT = configJson.get("DB_PORT")
 DB_DATABASE = configJson.get("DB_DATABASE")
+mysql_engine = sqlalchemy.create_engine(f"mysql+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}")
 
-engine = sqlalchemy.create_engine(
-    f"mysql+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}"
-)
-
-SECRET = configJson["INTERNAL_INTEGRATION_SECRET"]
-DATA_SOURCE_ID = configJson["DATA_SOURCE_ID"]
-AUTH_HEADERS = {
+NOTION_SECRET = configJson.get("INTERNAL_INTEGRATION_SECRET")
+NOTION_DS_ID = configJson.get("DATA_SOURCE_ID")
+notion_url = f"https://api.notion.com/v1/data_sources/{NOTION_DS_ID}/query"
+notion_headers = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {SECRET}",
     "Notion-Version": "2025-09-03"
 }
-
-urlDataSourceQuery = f"https://api.notion.com/v1/data_sources/{DATA_SOURCE_ID}/query"
-bodyDataSourceQuery = {"sorts": [
+notion_body = {"sorts": [
         {
             "property": "Date",
             "direction": "ascending"
@@ -51,16 +47,15 @@ bodyDataSourceQuery = {"sorts": [
             "direction": "ascending"
         }]
     }
-
-dscRequest = requests.post(url=urlDataSourceQuery, json=bodyDataSourceQuery, headers=AUTH_HEADERS)
-dscJson = dscRequest.json()
+notion_request = requests.post(url=notion_url, json=notion_body, headers=notion_headers)
+notion_json = notion_request.json()
 
 notionData = []
 notionColumns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ACCOUNT"]
 index = 1
 
 while True:
-    for item in dscJson["results"]:
+    for item in notion_json["results"]:
         properties = item["properties"]
         
         try:
@@ -107,21 +102,18 @@ while True:
         notionData.append(objectData)
         index += 1
 
-    if dscJson["has_more"]:
-        next_cursor = dscJson["next_cursor"]
-        bodyDataSourceQuery["start_cursor"] = next_cursor
+    if notion_json["has_more"]:
+        next_cursor = notion_json["next_cursor"]
+        notion_body["start_cursor"] = next_cursor
 
-        dscRequest = requests.post(url=urlDataSourceQuery, 
-                            json=bodyDataSourceQuery,
-                            headers=AUTH_HEADERS
-                            )
-        dscJson = dscRequest.json()
+        dscRequest = requests.post(url=notion_url, json=notion_body, headers=notion_headers)
+        notion_json = dscRequest.json()
     
     else:
         break
 
 df_notion = pandas.DataFrame(notionData, columns=notionColumns)
 
-df_notion.to_sql(name="FAT_FINANCES", con=engine, if_exists='replace', index=False)
+df_notion.to_sql(name="FAT_FINANCES", con=mysql_engine, if_exists='replace', index=False)
 df_notion.to_excel(r"C:\BI\FinancesDB\Finanças.xlsx", index=False)
 df_notion.to_csv(r"C:\BI\FinancesDB\FAT_TABLE.csv", index=False)
