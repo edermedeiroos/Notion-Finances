@@ -1,11 +1,11 @@
 import requests
 import json
-import pandas
+import pandas as pd
 import openpyxl
 import sqlalchemy
 
 # ----------------------------------------------------------------------------
-#             PERSONAL FINANCES - ETL
+#                        PERSONAL FINANCES - ETL
 #
 # 1) Load config json (DB & API Credentials)
 # 2) Connection to DB mysql
@@ -13,6 +13,8 @@ import sqlalchemy
 # 4) While True loop to get all pages from endpoint (with validation)
 # 5) Type definition and extract items from response
 # 6) DataFrame Creation and Export (csv, xlxs and DB)
+# 7) Request to Brazil Bank API
+# 8) DIM table with cdi fees along time
 # ----------------------------------------------------------------------------
 
 with open("config.json", "r") as archive:
@@ -30,10 +32,11 @@ NOTION_DS_ID = configJson.get("DATA_SOURCE_ID")
 notion_url = f"https://api.notion.com/v1/data_sources/{NOTION_DS_ID}/query"
 notion_headers = {
     "Content-Type": "application/json",
-    "Authorization": f"Bearer {SECRET}",
+    "Authorization": f"Bearer {NOTION_SECRET}",
     "Notion-Version": "2025-09-03"
 }
-notion_body = {"sorts": [
+notion_body = {
+    "sorts": [
         {
             "property": "Date",
             "direction": "ascending"
@@ -49,22 +52,22 @@ notion_body = {"sorts": [
     }
 notion_request = requests.post(url=notion_url, json=notion_body, headers=notion_headers)
 notion_json = notion_request.json()
-
-notionData = []
-notionColumns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ACCOUNT"]
-index = 1
+notion_data = []
+notion_columns = ["ID", "NAME", "VALUE", "TYPE", "CATEGORY", "SUB_CATEGORY", "DATE", "EFECTIVE_VALUE", "ACCOUNT"]
 
 while True:
     for item in notion_json["results"]:
         properties = item["properties"]
         
+        id = item.get("id")
+
         try:
             name = properties["Name"]["title"][0]["plain_text"]
         except (KeyError, IndexError, TypeError):
             name = "Sem Título"
 
         try:
-            value = round(float(properties["Value"]["number"]), 2)
+            value = properties["Value"]["number"]
         except (KeyError, TypeError):
             value = 0.0
 
@@ -79,9 +82,9 @@ while True:
             category = None
 
         try:
-            subCategory = properties["Sub Category"]["select"]["name"]
+            sub_category = properties["Sub Category"]["select"]["name"]
         except (KeyError, TypeError, AttributeError):
-            subCategory = None
+            sub_category = None
 
         try:
             date = properties["Date"]["date"]["start"]
@@ -89,30 +92,46 @@ while True:
             date = None
 
         try:
-            efectiveValue = properties["Effective Value"]["formula"]["number"]
+            effective_value = properties["Effective Value"]["formula"]["number"]
         except (KeyError, TypeError):
-            efectiveValue = 0.0
+            effective_value = 0.0
 
         try:
-            bankAccount = properties["Account"]["select"]["name"]
+            account = properties["Account"]["select"]["name"]
         except (KeyError, TypeError):
-            bankAccount = None
+            account = None
 
-        objectData = (index, name, value, transaction_type, category, subCategory, date, efectiveValue, bankAccount)
-        notionData.append(objectData)
-        index += 1
+        object_data = (id, name, value, transaction_type, category, sub_category, date, effective_value, account)
+        notion_data.append(object_data)
 
     if notion_json["has_more"]:
         next_cursor = notion_json["next_cursor"]
         notion_body["start_cursor"] = next_cursor
 
-        dscRequest = requests.post(url=notion_url, json=notion_body, headers=notion_headers)
-        notion_json = dscRequest.json()
+        notion_request = requests.post(url=notion_url, json=notion_body, headers=notion_headers)
+        notion_json = notion_request.json()
     
     else:
         break
 
-df_notion = pandas.DataFrame(notionData, columns=notionColumns)
+cdi_url = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados"
+cdi_params = {
+    "formato": "json",
+    "dataInicial": "01/01/2025"
+}
+cdi_request = requests.get(url=cdi_url, params=cdi_params)
+cdi_json = cdi_request.json()
+cdi_data = []
+cdi_columns = ["DATA", "TAXA"]
+
+for tx in cdi_json:
+    date = tx.get("data")
+    taxa = tx.get("valor")
+
+    cdi_data.append((date, taxa))
+
+df_notion = pd.DataFrame(notion_data, columns=notion_columns)
+df_cdi = pd.DataFrame(cdi_data, columns=cdi_columns)
 
 df_notion.to_sql(name="FAT_FINANCES", con=mysql_engine, if_exists='replace', index=False)
 df_notion.to_excel(r"C:\BI\FinancesDB\Finanças.xlsx", index=False)
