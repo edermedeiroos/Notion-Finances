@@ -5,7 +5,7 @@ import openpyxl
 import sqlalchemy
 
 # ----------------------------------------------------------------------------
-#                        PERSONAL FINANCES - ETL
+#                         NOTION FINANCES - ETL
 #
 # 1) Load config json (DB & API Credentials)
 # 2) Connection to DB mysql
@@ -13,8 +13,6 @@ import sqlalchemy
 # 4) While True loop to get all pages from endpoint (with validation)
 # 5) Type definition and extract items from response
 # 6) DataFrame Creation and Export (csv, xlxs and DB)
-# 7) Request to Brazil Bank API
-# 8) DIM table with cdi fees along time
 # ----------------------------------------------------------------------------
 
 with open("config.json", "r") as archive:
@@ -114,24 +112,8 @@ while True:
     else:
         break
 
-cdi_url = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados"
-cdi_params = {
-    "formato": "json",
-    "dataInicial": "01/01/2025"
-}
-cdi_request = requests.get(url=cdi_url, params=cdi_params)
-cdi_json = cdi_request.json()
-cdi_data = []
-cdi_columns = ["DATA", "TAXA"]
-
-for tx in cdi_json:
-    date = tx.get("data")
-    taxa = tx.get("valor")
-
-    cdi_data.append((date, taxa))
 
 df_notion = pd.DataFrame(notion_data, columns=notion_columns)
-df_cdi = pd.DataFrame(cdi_data, columns=cdi_columns)
 
 df_notion.to_sql(name="FAT_FINANCES", con=mysql_engine, if_exists='replace', index=False)
 df_notion.to_excel(r"C:\BI\FinancesDB\Finanças.xlsx", index=False)
