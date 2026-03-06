@@ -1,32 +1,20 @@
 import requests
-import json
 import pandas as pd
-import openpyxl
-import sqlalchemy
+import os
 
 # ----------------------------------------------------------------------------
 #                         NOTION FINANCES - ETL
 #
-# 1) Load config json (DB & API Credentials)
-# 2) Connection to DB mysql
+# 1) Load .env (API Credentials)
 # 3) Request to notion API
 # 4) While True loop to get all pages from endpoint (with validation)
 # 5) Type definition and extract items from response
-# 6) DataFrame Creation and Export (csv, xlxs and DB)
+# 6) DataFrame creation
 # ----------------------------------------------------------------------------
 
-with open("config.json", "r") as archive:
-    configJson = json.load(archive)
+NOTION_SECRET = os.getenv("NOTION_INTERNAL_INTEGRATION_SECRET")
+NOTION_DS_ID = "25b22a3e-ef57-8147-ae65-000b8dd610e3"
 
-DB_USER = configJson.get("DB_USER")
-DB_PASSWORD = configJson.get("DB_PASSWORD")
-DB_HOST = configJson.get("DB_HOST")
-DB_PORT = configJson.get("DB_PORT")
-DB_DATABASE = configJson.get("DB_DATABASE")
-mysql_engine = sqlalchemy.create_engine(f"mysql+mysqldb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}")
-
-NOTION_SECRET = configJson.get("INTERNAL_INTEGRATION_SECRET")
-NOTION_DS_ID = configJson.get("DATA_SOURCE_ID")
 notion_url = f"https://api.notion.com/v1/data_sources/{NOTION_DS_ID}/query"
 notion_headers = {
     "Content-Type": "application/json",
@@ -112,9 +100,4 @@ while True:
     else:
         break
 
-
 df_notion = pd.DataFrame(notion_data, columns=notion_columns)
-
-df_notion.to_sql(name="FAT_FINANCES", con=mysql_engine, if_exists='replace', index=False)
-df_notion.to_excel(r"C:\BI\FinancesDB\Finanças.xlsx", index=False)
-df_notion.to_csv(r"C:\BI\FinancesDB\FAT_TABLE.csv", index=False)

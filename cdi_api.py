@@ -1,8 +1,5 @@
 import requests
-import json
 import pandas as pd
-import openpyxl
-import sqlalchemy
 
 # ----------------------------------------------------------------------------
 #                             CDI FEES - ETL
